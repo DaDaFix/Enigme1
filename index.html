@@ -1,58 +1,28 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<title>Énigme</title>
+  <meta charset="UTF-8" />
+  <title>Énigme 1</title>
 </head>
-<body>
-  <h2>Résous l'énigme :</h2>
-  <p><strong>Énigme :</strong> Tête de m=rt | Entr+illes | cane à pêne</p>
-
-  <form id="enigmeForm">
-    <label>
-      Écris ta réponse pour "Tête de m=rt" :<br />
-      <input type="text" id="rep1" autocomplete="off" />
-    </label>
-    <br /><br />
-
-    <label>
-      Écris ta réponse pour "Entr+illes" :<br />
-      <input type="text" id="rep2" autocomplete="off" />
-    </label>
-    <br /><br />
-
-    <label>
-      Écris ta réponse pour "cane à pêne" :<br />
-      <input type="text" id="rep3" autocomplete="off" />
-    </label>
-    <br /><br />
-
-    <button type="button" onclick="verifier()">Vérifier</button>
-  </form>
-
-  <p id="resultat"></p>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 100px;">
+  <h1>Résous l'énigme</h1>
+  <p><strong>TÊTE DE M===, ENTR+ILLES, CANE À PÊNE</strong></p>
+  <input type="text" id="reponse" placeholder="Écris ta réponse ici" />
+  <button onclick="verifierReponse()">Valider</button>
+  <p id="message"></p>
 
   <script>
-    function verifier() {
-      // Récupérer les réponses en minuscules sans espaces devant/derrière
-      const rep1 = document.getElementById('rep1').value.trim().toLowerCase();
-      const rep2 = document.getElementById('rep2').value.trim().toLowerCase();
-      const rep3 = document.getElementById('rep3').value.trim().toLowerCase();
-
-      // Réponses attendues
-      const bonneRep1 = "tête de mort";
-      const bonneRep2 = "entrailles";
-      const bonneRep3 = "canne à pêche";
-
-      // Vérification
-      if(rep1 === bonneRep1 && rep2 === bonneRep2 && rep3 === bonneRep3){
-        document.getElementById('resultat').textContent = "Bravo, toutes les réponses sont correctes !";
-        document.getElementById('resultat').style.color = "green";
-        // Ici tu peux ajouter la redirection vers ton PowerPoint ou autre
-        // window.location.href = "lien_vers_ton_powerpoint.html";
+    function verifierReponse() {
+      const reponse = document.getElementById("reponse").value.toLowerCase().trim();
+      if (
+        reponse.includes("tête de mort") &&
+        reponse.includes("entrailles") &&
+        reponse.includes("cane à pêche")
+      ) {
+        document.getElementById("message").innerHTML =
+          "<a href='https://docs.google.com/presentation/d/1ivF58U-dA05r98652zFVLty2uaB82sLE/edit?usp=drive_link&ouid=117813653258866582302&rtpof=true&sd=true' target='_blank'>Bonne réponse ! Clique ici pour voir le fichier.</a>";
       } else {
-        document.getElementById('resultat').textContent = "Une ou plusieurs réponses sont incorrectes, essaie encore.";
-        document.getElementById('resultat').style.color = "red";
+        document.getElementById("message").innerText = "Mauvaise réponse...";
       }
     }
   </script>
